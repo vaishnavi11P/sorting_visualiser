@@ -1,0 +1,90 @@
+body {
+    margin: 0;
+    background-color: #282c34;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.heading {
+    margin-top: 15px;
+}
+
+#array-container {
+    width: 100%;
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    overflow-x: auto;
+}
+
+.line {
+    width: 10px;
+    margin: 0 2px;
+    background-color: turquoise;
+}
+
+.menu {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.controls {
+    display: flex;
+    align-items: center;
+}
+
+.sorting-algorithms {
+    display: flex;
+    align-items: center;
+}
+
+.controls button,
+.sorting-algorithms label,
+.sorting-algorithms select {
+    margin: 5px;
+    padding: 10px 15px;
+    background-color: turquoise;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #21a1f1;
+}
+
+label {
+    margin: 0 10px;
+}
+
+.comparison-counter {
+    margin-top: 10px;
+}
+
+.performance-section {
+    margin-top: 20px;
+}
+
+button{
+    margin: 5px;
+    padding: 10px 15px;
+    background-color: turquoise;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-left: -83%;
+}

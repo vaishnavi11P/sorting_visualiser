@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorting Visualizer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="heading">Sorting Visualizer</h1>
+        <div class="menu">
+            <div class="controls">
+                <button onclick="generateArray()">Generate New Array</button>
+                <button onclick="stopSorting()">Stop</button>
+                <button onclick="resetArray()">Reset Array</button>
+            </div>
+            <div class="sorting-algorithms">
+                <select id="sorting-algo" onchange="selectSortingAlgorithm(this.value)">
+                    <option value="none" selected disabled hidden>Choose Sorting Algorithm</option>
+                    <option value="bubble">Bubble Sort</option>
+                    <option value="selection">Selection Sort</option>
+                    <option value="quick">Quick Sort</option>
+                    <option value="merge">Merge Sort</option>
+                    <option value="heap">Heap Sort</option>
+                </select>
+            </div>
+        </div>
+        <button onclick="showPerformance()">Show Performance Metrics</button>
+        <div class="settings">
+            <label for="speed">Speed:</label>
+            <input type="range" id="speed" min="10" max="500" value="200" onchange="updateSpeed()">
+            <label for="size">Size:</label>
+            <input type="range" id="size" min="10" max="200" value="50" onchange="generateArray()">
+        </div>
+        <div class="comparison-counter">
+            Comparisons: <span id="comparisons">0</span>
+        </div>
+        <div id="array-container"></div>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        function showPerformance() {
+            const newWindow = window.open();
+            newWindow.document.body.innerHTML = `
+                <html>
+                <head>
+                    <title>Performance Metrics</title>
+                    <style>
+                        body {
+                            background-color: #282c34;
+                            font-family: Arial, sans-serif;
+                            padding: 20px;
+                        }
+                        table {
+                            width: 100%;
+                            border-collapse: collapse;
+                            margin-top: 20px;
+                            border: 1px solid black;
+                            border-radius: 10px;
+                        }
+                        th, td {
+                            padding: 8px;
+                            text-align: center;
+                            border: 1px solid #ccc;
+                            background-color: turquoise;
+                            color: black;
+                        }
+                        th {
+                            background-color: #daebe8;
+                        }
+                        h2{
+                            color: white;
+                        }
+                    </style>
+                </head>
+                <body>
+                    <h2>Performance Metrics</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Algorithm</th>
+                                <th>Comparisons</th>
+                                <th>Time</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Bubble Sort</td>
+                                <td>${performanceMetrics.bubble.comparisons}</td>
+                                <td>${performanceMetrics.bubble.time.toFixed(2)} ms</td>
+                            </tr>
+                            <tr>
+                                <td>Selection Sort</td>
+                                <td>${performanceMetrics.selection.comparisons}</td>
+                                <td>${performanceMetrics.selection.time.toFixed(2)} ms</td>
+                            </tr>
+                            <tr>
+                                <td>Quick Sort</td>
+                                <td>${performanceMetrics.quick.comparisons}</td>
+                                <td>${performanceMetrics.quick.time.toFixed(2)} ms</td>
+                            </tr>
+                            <tr>
+                                <td>Merge Sort</td>
+                                <td>${performanceMetrics.merge.comparisons}</td>
+                                <td>${performanceMetrics.merge.time.toFixed(2)} ms</td>
+                            </tr>
+                            <tr>
+                                <td>Heap Sort</td>
+                                <td>${performanceMetrics.heap.comparisons}</td>
+                                <td>${performanceMetrics.heap.time.toFixed(2)} ms</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </body>
+                </html>
+            `;
+        }
+    </script>
+</body>
+</html>
